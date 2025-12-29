@@ -34,6 +34,7 @@ to detect real-world executed cross-site scripting vulnerabilities.
 - ✅ Recursive crawling (same domain only)
 - ✅ Auto XSS report generation (`.ndjson`)
 - ✅ Clean & readable CLI colored output
+- ✅ Marker-based validation to avoid false positives
 
 ---
 

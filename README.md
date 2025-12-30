@@ -19,7 +19,7 @@ to detect real-world executed cross-site scripting vulnerabilities.
 
 <div align="center">
 
-<img src="asset/example.png" width="800">
+<img src="asset/example.gif" width="800">
 
 <sub>Example XSS detection result</sub>
 

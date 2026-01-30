@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ XSS Scanner (Playwright-Based)
+# XSS Scanner (Playwright-Based)
 
 A modern **Playwright-based XSS Scanner** designed for **bug bounty hunters**
 and **security researchers**.
@@ -11,7 +11,7 @@ URL parameter injection, and smart form submission.
 This Playwright-based XSS scanner is designed for bug bounty hunters and penetration testers
 to detect real-world executed cross-site scripting vulnerabilities.
 
-> 🔥 Focused on **XSS that is actually EXECUTED**, not just reflected strings.
+> Focused on **XSS that is actually EXECUTED**, not just reflected strings.
 
 </div>
 
@@ -27,21 +27,21 @@ to detect real-world executed cross-site scripting vulnerabilities.
 
 ---
 
-## ✨ Features
+## Features
 
-- ✅ Real browser execution (Playwright + Chromium)
-- ✅ URL parameter XSS scanning
-- ✅ Multi-form XSS scanning
-- ✅ Smart form submission (auto bypass required / validation fields)
-- ✅ JavaScript dialog detection (`alert`, `prompt`)
-- ✅ Recursive crawling (same domain only)
-- ✅ Auto XSS report generation (`.ndjson`)
-- ✅ Clean & readable CLI colored output
-- ✅ Marker-based validation to avoid false positives
+- Real browser execution (Playwright + Chromium)
+- URL parameter XSS scanning
+- Multi-form XSS scanning
+- Smart form submission (auto bypass required / validation fields)
+- JavaScript dialog detection (`alert`, `prompt`)
+- Recursive crawling (same domain only)
+- Auto XSS report generation (`.ndjson`)
+- Clean & readable CLI colored output
+- Marker-based validation to avoid false positives
 
 ---
 
-## 🧠 How It Works (High Level)
+## How It Works (High Level)
 
 1. Crawl target website (same domain)
 2. Detect URL parameters
@@ -51,11 +51,11 @@ to detect real-world executed cross-site scripting vulnerabilities.
 6. Fallback to raw form submission if smart submit fails
 7. Save **confirmed executed XSS** to report file
 
-> ⚠️ Only **EXECUTED XSS** will be reported.
+> Only **EXECUTED XSS** will be reported.
 
 ---
 
-## 📦 Requirements
+## Requirements
 
 - Python **3.8+**
 - Playwright
@@ -63,30 +63,18 @@ to detect real-world executed cross-site scripting vulnerabilities.
 
 ---
 
-## 🚀 Installation
-
-### 1️⃣ Clone repository
+## Installation
 
 ```bash
 git clone https://github.com/pangeran-droid/XSS-Scanner-Pro.git
 cd XSS-Scanner-Pro
-```
-
-### 2️⃣ Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
-
-### 3️⃣ Install Playwright browser
-
-```bash
 playwright install chromium
 ```
 
 ---
 
-## ▶️ Usage
+## Usage
 
 ```bash
 python3 main.py -u https://target.com
@@ -101,7 +89,7 @@ python3 main.py -u https://target.com
 
 ---
 
-## 💣 Payload Examples
+## Payload Examples
 
 Each scan generates a unique marker using a random numeric value.  
 The marker is injected into XSS payloads and verified upon execution.
@@ -114,7 +102,7 @@ The marker is injected into XSS payloads and verified upon execution.
 
 ---
 
-## 📝 Output Example
+## Output Example
 
 ```bash
 [*] Crawling (0) → https://target.com
@@ -124,7 +112,7 @@ The marker is injected into XSS payloads and verified upon execution.
 
 ---
 
-## 📂 Report File
+## Report File
 
 Confirmed XSS findings will be saved automatically to:
 
@@ -147,10 +135,3 @@ xss_report.ndjson
 >
 > The author is **not responsible** for any misuse or illegal activities.
 
----
-
-<div align="center">
-
-Happy hunting 🔥
-
-</div>

@@ -239,7 +239,9 @@ async def scan(target, depth=2):
 # Main
 if __name__ == "__main__":
     banner()
-    ap = argparse.ArgumentParser()
+    ap = argparse.ArgumentParser(
+        usage=f"python3 {os.path.basename(sys.argv[0])} [options]"
+    )
     ap.add_argument("-u", "--url", required=True)
     ap.add_argument("-d", "--depth", type=int, default=2)
     args = ap.parse_args()

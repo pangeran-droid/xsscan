@@ -66,8 +66,8 @@ to detect real-world executed cross-site scripting vulnerabilities.
 ## Installation
 
 ```bash
-git clone https://github.com/pangeran-droid/XSS-Scanner-Pro.git
-cd XSS-Scanner-Pro
+git clone https://github.com/pangeran-droid/xsscan.git
+cd xsscan
 pip install -r requirements.txt
 playwright install chromium
 ```

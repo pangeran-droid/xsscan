@@ -1,4 +1,4 @@
-import asyncio, json, random, string, sys, os, time
+import asyncio, json, random, string, sys, os, time, argparse
 from urllib.parse import urlparse, urljoin, parse_qs, urlencode
 from bs4 import BeautifulSoup
 from playwright.async_api import async_playwright
@@ -6,28 +6,18 @@ from colorama import Fore, Style, init
 
 init(autoreset=True)
 
-# =====================
-# UI Helpers
-# =====================
-
+# Helpers
 def clear_screen():
     os.system("cls" if os.name == "nt" else "clear")
 
 def banner():
-    print(Fore.CYAN + r"""
-
-██╗  ██╗███████╗███████╗    ███████╗ ██████╗ █████╗ ███╗   ██╗███╗   ██╗███████╗██████╗ 
-╚██╗██╔╝██╔════╝██╔════╝    ██╔════╝██╔════╝██╔══██╗████╗  ██║████╗  ██║██╔════╝██╔══██╗
- ╚███╔╝ ███████╗███████╗    ███████╗██║     ███████║██╔██╗ ██║██╔██╗ ██║█████╗  ██████╔╝
- ██╔██╗ ╚════██║╚════██║    ╚════██║██║     ██╔══██║██║╚██╗██║██║╚██╗██║██╔══╝  ██╔══██╗
-██╔╝ ██╗███████║███████║    ███████║╚██████╗██║  ██║██║ ╚████║██║ ╚████║███████╗██║  ██║
-╚═╝  ╚═╝╚══════╝╚══════╝    ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝
-                                                                                        
-          
-        XSS Scanner Pro
-        Maintained by pangeran
+    print(Fore.CYAN + r"""                                
+   _  _____________________ _____ 
+  | |/_/ ___/ ___/ ___/ __ `/ __ \
+ _>  <(__  |__  ) /__/ /_/ / / / /
+/_/|_/____/____/\___/\__,_/_/ /_/ 
+                        by pangeran 1.0
 """)
-    print(Style.DIM + "────────────────────────────────────────────")
 
 def info(msg):
     print(Fore.BLUE + "[*] " + msg)
@@ -41,10 +31,7 @@ def warn(msg):
 def xss(msg):
     print(Fore.RED + "[🔥 XSS] " + msg)
 
-# =====================
-# Utils (UNCHANGED)
-# =====================
-
+# Utils
 def random_marker():
     return "1337" + ''.join(random.choices(string.digits, k=6))
 
@@ -64,10 +51,7 @@ def get_payload_list(marker, aggressive=False, use_all=False):
 def same_domain(u, base):
     return urlparse(u).netloc == urlparse(base).netloc
 
-# =====================
-# Scanner
-# =====================
-
+# Scan
 async def scan(target, depth=2):
     visited = set()
     results = []
@@ -126,7 +110,7 @@ async def scan(target, depth=2):
 
             soup = BeautifulSoup(html, "html.parser")
 
-            # ===== URL PARAM XSS =====
+            # url params
             parsed = urlparse(url)
             params = parse_qs(parsed.query)
 
@@ -150,7 +134,7 @@ async def scan(target, depth=2):
                     await page.reload()
                     await page.wait_for_timeout(3000)
 
-            # ===== FORM XSS =====
+            # form
             forms = soup.find_all("form")
 
             for idx, form in enumerate(forms):
@@ -236,7 +220,7 @@ async def scan(target, depth=2):
 
                         await page.wait_for_timeout(3000)
 
-            # ===== FOLLOW LINKS =====
+            # follow links
             for a in soup.find_all("a", href=True):
                 link = urljoin(url, a["href"])
                 if same_domain(link, target):
@@ -252,12 +236,9 @@ async def scan(target, depth=2):
         ok(f"XSS Found    : {len(results)}")
         print()
 
-# =====================
-# Entry
-# =====================
-
+# Main
 if __name__ == "__main__":
-    import argparse
+    banner()
     ap = argparse.ArgumentParser()
     ap.add_argument("-u", "--url", required=True)
     ap.add_argument("-d", "--depth", type=int, default=2)

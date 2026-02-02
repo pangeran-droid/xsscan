@@ -1,6 +1,16 @@
 <div align="center">
 
+<img src="asset/logo.jpg" width="200" alt="XSS Scanner Logo">
+
 # XSS Scanner (Playwright-Based)
+
+![Python Version](https://img.shields.io/badge/python-3.8%2B-blue?style=for-the-badge&logo=python)
+![Playwright](https://img.shields.io/badge/Playwright-Tested-green?style=for-the-badge&logo=playwright)
+![License](https://img.shields.io/badge/license-MIT-red?style=for-the-badge)
+![Repo Size](https://img.shields.io/github/repo-size/pangeran-droid/xsscan?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/pangeran-droid/xsscan?style=for-the-badge)
+
+<br>
 
 A modern **Playwright-based XSS Scanner** designed for **bug bounty hunters**
 and **security researchers**.

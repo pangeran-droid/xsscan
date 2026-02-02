@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="asset/logo.jpg" width="200" alt="XSS Scanner Logo">
+<img src="assets/logo.png" width="300" alt="XSS Scanner Logo">
 
 # XSS Scanner (Playwright-Based)
 
@@ -87,7 +87,7 @@ playwright install chromium
 ## Usage
 
 ```bash
-python3 main.py -u https://target.com
+python3 xsscan.py -u https://target.com
 ```
 
 ### Options
